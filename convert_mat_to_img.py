@@ -23,7 +23,7 @@ def cvs_test(test_path):
         trains.append((rgb, range))
     #random.shuffle(trains)
 
-    with open('testforcal.csv', 'w') as output:
+    with open('inference.csv', 'w') as output:
         for (image_name, depth_name) in trains:
             output.write("%s,%s" % (image_name, depth_name))
             output.write("\n")
@@ -38,7 +38,7 @@ if __name__ == '__main__':
     #cvs_test(nyu_test_path)
     #train_path ='data//train'
     #test_path = 'data//test4'
-    inference_path = 'data//testforcal'
+    inference_path = 'data//inference18'
     cvs_test(inference_path)
     #cvs_test(train_path)
     #cvs_test(test_path)

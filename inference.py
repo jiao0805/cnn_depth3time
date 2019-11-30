@@ -17,9 +17,9 @@ TARGET_HEIGHT = 55
 TARGET_WIDTH = 74
 REFINE_TRAIN = True
 FINE_TUNE = True
-REFINE_DIR = "loss=50//refine50"
-COARSE_DIR = "loss=50//coarse100"
-batch_size = 72
+COARSE_DIR = "coarse"
+REFINE_DIR = "refine"
+batch_size = 36
 
 def csv_inputs(batch_size,csv_file_path):
     filename_queue = tf.train.string_input_producer([csv_file_path], shuffle=False)
@@ -113,7 +113,7 @@ def test():
             print('set up threads')
             threads = tf.train.start_queue_runners(coord=coord)
             logits_val,images_val = sess.run([logits,images],feed_dict={keep_conv: 1, keep_hidden: 1})
-            output_predict(logits_val, logits_val, images_val, "data/inference_result")
+            output_predict(logits_val, logits_val, images_val, "images/inference_result18")
             coord.request_stop()
             coord.join(threads)
 
